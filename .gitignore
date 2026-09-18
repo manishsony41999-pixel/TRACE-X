@@ -1,0 +1,38 @@
+# =========================
+# Environment files
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Python - Backend
+# =========================
+backend/venv/
+backend/__pycache__/
+backend/**/*.pyc
+backend/.pytest_cache/
+
+# =========================
+# Database
+# =========================
+*.db
+*.sqlite
+*.sqlite3
+
+# =========================
+# Node.js - Frontend
+# =========================
+frontend/node_modules/
+frontend/dist/
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+
+# =========================
+# OS generated files
+# =========================
+.DS_Store
+Thumbs.db
