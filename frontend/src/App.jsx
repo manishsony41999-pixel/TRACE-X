@@ -1626,9 +1626,9 @@ export default function App() {
               <div style={{ background: '#090d16', border: '1px solid var(--border-color)', borderRadius: '8px', padding: '16px', marginBottom: '20px' }}>
                 <div style={{ fontSize: '0.8rem', color: '#94a3b8', marginBottom: '8px', fontWeight: 600 }}>OAuth Credentials (.env Setup):</div>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#cbd5e1', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <div>GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com</div>
-                  <div>GOOGLE_CLIENT_SECRET=your-google-client-secret</div>
-                  <div>GOOGLE_REDIRECT_URI=http://127.0.0.1:8000/api/gmail/callback</div>
+                  <div>Google OAuth 2.0 is securely configured on the TRACE-X backend.</div>
+                  <div>Gmail access: Read-only security auditing</div>
+                  <div>Connection: Secure OAuth 2.0</div>
                 </div>
               </div>
 
