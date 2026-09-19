@@ -42,3 +42,9 @@ Thumbs.db
 .coverage
 htmlcov/
 
+
+# Local virtual environments
+.venv/
+venv/
+backend/.venv/
+
