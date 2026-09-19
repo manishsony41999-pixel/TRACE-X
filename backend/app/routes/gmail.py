@@ -197,6 +197,12 @@ def gmail_callback(
             db,
             state=state
         )
+        # Automatically start Gmail monitoring
+        watch_result = start_gmail_watch(
+            account_data["email"],
+            db
+        )
+
 
         return RedirectResponse(
             url="https://trace-x-frontend.onrender.com/?gmail_connected=true"
