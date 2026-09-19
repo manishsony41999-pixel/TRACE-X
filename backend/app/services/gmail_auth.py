@@ -56,6 +56,7 @@ def get_authorization_url(custom_redirect_uri: Optional[str] = None) -> Dict[str
         config,
         scopes=SCOPES,
         redirect_uri=redirect_uri
+        autogenerate_code_verifier=False
     )
 
     auth_url, state = flow.authorization_url(
@@ -88,6 +89,7 @@ def exchange_code_for_tokens(
         config,
         scopes=SCOPES,
         redirect_uri=redirect_uri
+        autogenerate_code_verifier=False
     )
 
     flow.fetch_token(code=code)
