@@ -175,6 +175,7 @@ def connect_gmail(redirect_uri: Optional[str] = None):
 @router.get("/callback")
 def gmail_callback(
     code: Optional[str] = None,
+    state: Optional[str] = None,
     error: Optional[str] = None,
     db: Session = Depends(get_db)
 ):
@@ -192,7 +193,11 @@ def gmail_callback(
         )
 
     try:
-        account_data = exchange_code_for_tokens(code, db)
+        account_data = exchange_code_for_tokens(
+    code,
+    db,
+    state=state
+      )
         return {
             "success": True,
             "data": {
