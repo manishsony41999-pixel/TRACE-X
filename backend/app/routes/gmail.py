@@ -1,7 +1,6 @@
 """
 TRACE-X Gmail Watch, Webhook & Synchronization Routes
 """
-
 import json
 import base64
 from fastapi import APIRouter, Depends, Request, HTTPException, status
@@ -194,24 +193,24 @@ def gmail_callback(
 
     try:
         account_data = exchange_code_for_tokens(
-    code,
-    db,
-    state=state
-      )
-        return {
-            "success": True,
-            "data": {
-                "message": f"Successfully connected Gmail account '{account_data['email']}'.",
-                "account": account_data
-            },
-            "error": None
-        }
+            code,
+            db,
+            state=state
+        )
+
+        return RedirectResponse(
+            url="https://trace-x-frontend.onrender.com/?gmail_connected=true"
+        )
+
     except Exception as exc:
         return JSONResponse(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            content={"success": False, "data": None, "error": {"message": str(exc)}}
+            content={
+                "success": False,
+                "data": None,
+                "error": {"message": str(exc)}
+            }
         )
-
 
 @router.post("/watch/start")
 def activate_watch(

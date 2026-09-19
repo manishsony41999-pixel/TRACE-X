@@ -9,6 +9,9 @@ import {
 const API_BASE =
   import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api';
 export default function App() {
+  const [gmailConnected, setGmailConnected] = React.useState(
+    new URLSearchParams(window.location.search).get("gmail_connected") === "true"
+  );
   const [activeTab, setActiveTab] = useState('upload'); // 'upload', 'dossier', 'cases', 'gmail'
   const [apiOnline, setApiOnline] = useState(false);
   const [wsConnected, setWsConnected] = useState(false);
@@ -1637,6 +1640,7 @@ export default function App() {
                   try {
                     const res = await fetch(`${API_BASE}/gmail/connect`);
                     const data = await res.json();
+
                     if (data.success && data.data.auth_url) {
                       window.location.href = data.data.auth_url;
                     } else {
@@ -1662,7 +1666,7 @@ export default function App() {
                   gap: '8px'
                 }}
               >
-                <Lock size={16} /> Connect Gmail Account via OAuth 2.0
+                {gmailConnected ? "✓ Gmail Connected Successfully" : "Connect Gmail Account via OAuth 2.0"}
               </button>
             </div>
           </div>
