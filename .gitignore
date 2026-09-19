@@ -36,3 +36,9 @@ frontend/dist/
 # =========================
 .DS_Store
 Thumbs.db
+# Additional Python / test files
+*.pyc
+.pytest_cache/
+.coverage
+htmlcov/
+
