@@ -237,17 +237,23 @@ def get_gmail_connection_status(
     account_list = []
 
     for acc in active_accounts:
+        watch_active = False
+        if acc.watch_expiration is not None:
+            watch_expiration = acc.watch_expiration
+
+            if watch_expiration.tzinfo is None:
+                watch_expiration = watch_expiration.replace(tzinfo=timezone.utc)
+
+            watch_active = watch_expiration > datetime.now(timezone.utc)
+
         account_list.append({
             "email": acc.email,
             "connected_at": (
                 acc.created_at.isoformat()
                 if acc.created_at
                 else None
-            ),
-            "watch_active": bool(
-                acc.watch_expiration
-                and acc.watch_expiration > datetime.now(timezone.utc)
-            ),
+                ),
+            "watch_active": watch_active,
             "last_history_id": acc.history_id
         })
 
